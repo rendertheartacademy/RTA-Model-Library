@@ -21,11 +21,28 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description:
 
 const CheckIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#c8102e]"><polyline points="20 6 9 17 4 12"></polyline></svg>;
 
-// Increased size of check circle slightly to match larger badge text
-const GreenCheckCircle = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-500 mr-3">
-    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+// --- Modern Icons for Trust Badges (Green) ---
+
+// Modern Star Icon
+const StarIcon = ({ size = 20 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500 mr-2 md:mr-3">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+  </svg>
+);
+
+// Modern Clock Icon (for Cancel Anytime)
+const ClockIcon = ({ size = 20 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500 mr-2 md:mr-3">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="12 6 12 12 16 14"></polyline>
+  </svg>
+);
+
+// Modern Headset Icon
+const HeadsetIcon = ({ size = 20 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500 mr-2 md:mr-3">
+    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
   </svg>
 );
 
@@ -48,47 +65,57 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section className="relative w-full h-screen flex flex-col items-center justify-center px-4 md:px-6 overflow-hidden">
         {/* 
             Inner Container
-            - pt-20/24: Pushes content down slightly from exact center.
+            pt-24: Balanced top spacing
         */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center pt-20 md:pt-24">
-            {/* HEADLINE */}
-            <h1 className="w-full text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] drop-shadow-2xl uppercase">
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center pt-24">
+            {/* HEADLINE: SCALED DOWN 
+                text-5xl mobile, text-7xl desktop (Approx ~72px to 96px, smaller than the giant 128px)
+            */}
+            <h1 className="w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-2xl uppercase">
             YOUR COMPLETE <span className="text-[#c8102e]">3D</span>
             <br />
             <span className="text-[#c8102e]">MODEL</span> LIBRARY
             </h1>
             
-            {/* SUB-HEADLINE */}
-            <p className="mt-6 md:mt-10 max-w-3xl mx-auto text-sm md:text-lg text-gray-300 font-normal leading-relaxed drop-shadow-md">
+            {/* SUB-HEADLINE: SCALED DOWN 
+                text-base mobile, text-xl desktop
+            */}
+            <p className="mt-8 max-w-4xl mx-auto text-base md:text-xl lg:text-2xl text-gray-300 font-normal leading-relaxed drop-shadow-md">
             Get unlimited access to thousands of high-quality 3D models for 3ds Max & SketchUp. Updated daily for professional visualization.
             </p>
 
-            {/* CTA BUTTON */}
-            <div className="mt-8 md:mt-10">
+            {/* CTA BUTTON: SCALED DOWN 
+                Standard large button sizing
+            */}
+            <div className="mt-10 md:mt-12">
                 <Button 
                     onClick={() => onNavigate('signup')} 
-                    className="!px-8 !py-3 !text-base md:!px-10 md:!py-4 md:!text-xl !font-bold !rounded-lg shadow-2xl shadow-[#c8102e]/30 hover:shadow-[#c8102e]/50 hover:scale-105 !bg-[#c8102e] hover:!bg-[#a00d25] border-none transition-all duration-300"
+                    className="!px-8 !py-3 !text-lg md:!px-12 md:!py-5 md:!text-2xl !font-bold !rounded-xl shadow-2xl shadow-[#c8102e]/30 hover:shadow-[#c8102e]/50 hover:scale-105 !bg-[#c8102e] hover:!bg-[#a00d25] border-none transition-all duration-300"
                 >
-                    Subscribe Now <span aria-hidden="true" className="ml-3 text-lg md:text-xl leading-none">&rsaquo;</span>
+                    Subscribe Now <span aria-hidden="true" className="ml-2 text-xl md:text-2xl leading-none">&rsaquo;</span>
                 </Button>
             </div>
 
-            {/* TRUST BADGES */}
-            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-8 md:mt-10">
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
-                <GreenCheckCircle /> Premium Quality
+            {/* TRUST BADGES: UPDATED ICONS & COLOR
+                - Green Icons
+                - Modern styles
+                - Clock for Cancel
+            */}
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-10 md:mt-16">
+                <span className="flex items-center bg-[#0d0d0d] px-5 py-2 md:px-6 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-semibold shadow-lg hover:border-green-500/30 transition-colors">
+                    <StarIcon size={20} /> Premium Quality
                 </span>
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
-                <GreenCheckCircle /> Cancel anytime
+                <span className="flex items-center bg-[#0d0d0d] px-5 py-2 md:px-6 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-semibold shadow-lg hover:border-green-500/30 transition-colors">
+                    <ClockIcon size={20} /> Cancel anytime
                 </span>
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
-                <GreenCheckCircle /> 24/7 Support
+                <span className="flex items-center bg-[#0d0d0d] px-5 py-2 md:px-6 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-semibold shadow-lg hover:border-green-500/30 transition-colors">
+                    <HeadsetIcon size={20} /> 24/7 Support
                 </span>
             </div>
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
         </div>
       </section>
