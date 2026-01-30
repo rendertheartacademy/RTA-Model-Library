@@ -52,14 +52,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         */}
         <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center pt-20 md:pt-24">
             {/* HEADLINE */}
-            <h1 className="w-full text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white leading-[0.9] drop-shadow-2xl uppercase">
+            <h1 className="w-full text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9] drop-shadow-2xl uppercase">
             YOUR COMPLETE <span className="text-[#c8102e]">3D</span>
             <br />
             <span className="text-[#c8102e]">MODEL</span> LIBRARY
             </h1>
             
             {/* SUB-HEADLINE */}
-            <p className="mt-6 md:mt-10 max-w-3xl mx-auto text-base md:text-xl text-gray-300 font-normal leading-relaxed drop-shadow-md">
+            <p className="mt-6 md:mt-10 max-w-3xl mx-auto text-sm md:text-lg text-gray-300 font-normal leading-relaxed drop-shadow-md">
             Get unlimited access to thousands of high-quality 3D models for 3ds Max & SketchUp. Updated daily for professional visualization.
             </p>
 
@@ -75,13 +75,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
             {/* TRUST BADGES */}
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-8 md:mt-10">
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-sm md:text-lg font-medium shadow-lg hover:border-green-500/30 transition-colors">
+                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
                 <GreenCheckCircle /> Premium Quality
                 </span>
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-sm md:text-lg font-medium shadow-lg hover:border-green-500/30 transition-colors">
+                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
                 <GreenCheckCircle /> Cancel anytime
                 </span>
-                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-sm md:text-lg font-medium shadow-lg hover:border-green-500/30 transition-colors">
+                <span className="flex items-center bg-[#0d0d0d] px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/10 text-gray-200 text-xs md:text-base font-medium shadow-lg hover:border-green-500/30 transition-colors">
                 <GreenCheckCircle /> 24/7 Support
                 </span>
             </div>
