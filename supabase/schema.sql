@@ -12,7 +12,11 @@ CREATE TABLE IF NOT EXISTS public.subscriptions (
   
   plan_tier TEXT NOT NULL, -- 'Essential', 'Professional', 'Premium'
   plan_duration TEXT NOT NULL, -- '3 Months', '6 Months', '12 Months'
-  amount_paid TEXT NOT NULL, -- e.g. '120,000 MMK'
+  
+  -- NEW: Split Currency Columns
+  amount_mmk TEXT, -- Stores amount if paid via KBZPay (e.g. '24,000 MMK')
+  amount_thb TEXT, -- Stores amount if paid via Thai Bank (e.g. '941.4 THB')
+  amount_paid TEXT, -- DEPRECATED: Kept for legacy data, now nullable
   
   is_rta_student BOOLEAN DEFAULT FALSE,
   rta_class_name TEXT, 
