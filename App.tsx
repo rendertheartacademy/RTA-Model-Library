@@ -120,6 +120,9 @@ export default function App() {
             [Duration.TwelveMonths]: '12 Months'
         };
 
+        const calculatedAmount = getAmountString(data);
+        const isMyanmar = data.country === 'Myanmar';
+
         // 3. Insert into Database
         const dbPayload = {
             full_name: data.fullName,
@@ -128,11 +131,16 @@ export default function App() {
             telegram_username: data.telegram,
             plan_tier: data.plan,
             plan_duration: durationMap[data.duration],
-            amount_paid: getAmountString(data),
+            
+            // Updated Logic: Split currencies into specific columns
+            amount_mmk: isMyanmar ? calculatedAmount : null,
+            amount_thb: !isMyanmar ? calculatedAmount : null,
+            // amount_paid is no longer populated
+
             is_rta_student: data.isRtaStudent,
             rta_class_name: data.rtaClasses.join(', ') + (data.otherRtaClass ? `, ${data.otherRtaClass}` : ''),
             software_format: data.format,
-            payment_method: data.country === 'Myanmar' ? 'KBZPay' : 'Thai Bank',
+            payment_method: isMyanmar ? 'KBZPay' : 'Thai Bank',
             payment_slip_url: paymentSlipUrl,
             status: 'pending'
         };
