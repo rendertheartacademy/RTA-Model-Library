@@ -74,31 +74,37 @@ const SignUpNavMenu: React.FC<{ currentStep: number; maxStepReached: number; set
 export const Header: React.FC<HeaderProps> = ({ page, onNavigate, signUpStep, signUpMaxStep, onSetSignUpStep, onLogout }) => {
   return (
     <header className="absolute top-0 left-0 w-full z-50">
-      <nav className="w-full max-w-[1920px] mx-auto px-4 py-4 md:px-16 md:py-6 flex items-center justify-between">
+      <nav className="w-full max-w-[1920px] mx-auto px-4 py-4 md:px-12 md:py-6 flex items-center justify-between">
         <button onClick={() => onNavigate('landing')} className="flex items-center space-x-3 group">
-          <div className="w-8 h-8 md:w-9 md:h-9 bg-[#c8102e] rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-            <span className="text-white font-bold text-base md:text-lg tracking-tighter">RTA</span>
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-[#c8102e] rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+            <span className="text-white font-bold text-lg md:text-xl tracking-tighter">RTA</span>
           </div>
-          <span className="text-sm md:text-lg font-semibold text-white whitespace-nowrap">3D Models</span>
+          <span className="text-lg md:text-xl font-semibold text-white whitespace-nowrap">3D Models</span>
         </button>
 
-        <div className="flex items-center gap-3 md:gap-8">
+        <div className="flex items-center gap-4 md:gap-6">
             {page === 'landing' && (
                 <>
                     <button 
                         onClick={() => onNavigate('login')} 
-                        className="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+                        className="text-sm md:text-base font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap"
                     >
-                        Check Status
+                        Check Status / Login
                     </button>
-                    <Button onClick={() => onNavigate('signup')} className="!py-2 !px-4 md:!py-2.5 md:!px-6 text-xs md:text-sm !rounded-md whitespace-nowrap">
-                        Get Access
-                    </Button>
+
+                    {/* Homepage Logo/Icon - Moved to the right of Login */}
+                    <button 
+                        onClick={() => onNavigate('landing')}
+                        className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                        title="Home"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </button>
                 </>
             )}
             
             {page === 'login' && (
-                 <Button onClick={() => onNavigate('signup')} className="!py-2 !px-4 md:!py-2.5 md:!px-6 text-xs md:text-sm !rounded-md whitespace-nowrap">
+                 <Button onClick={() => onNavigate('signup')} className="!py-2 !px-4 md:!py-2.5 md:!px-6 text-sm md:text-base !rounded-lg whitespace-nowrap">
                     Get Access
                 </Button>
             )}
@@ -106,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({ page, onNavigate, signUpStep, si
             {page === 'dashboard' && onLogout && (
                  <button 
                     onClick={onLogout} 
-                    className="text-xs md:text-sm font-medium text-gray-300 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
+                    className="text-sm md:text-base font-medium text-gray-300 hover:text-white transition-colors flex items-center gap-2 whitespace-nowrap"
                  >
                     Log Out
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
