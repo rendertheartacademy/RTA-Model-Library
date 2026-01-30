@@ -575,8 +575,6 @@ const Step4Payment: React.FC<{ formData: FormData; totalPrice: number; onBack: (
     const isMyanmar = formData.country === Country.Myanmar;
     const localPrice = isMyanmar ? (totalPrice * CURRENCY_RATES.MMK).toLocaleString() : (totalPrice * CURRENCY_RATES.THB).toLocaleString();
     const currency = isMyanmar ? 'MMK' : 'THB';
-    const paymentMethod = isMyanmar ? 'KBZPay' : 'Thai Bank Transfer';
-    const accountInfo = isMyanmar ? 'Acc: 09xxxxxxxxx (Name)' : 'Acc: 123-456-7890 (Bank Name)';
     
     return (
         <Card className="relative">
@@ -592,9 +590,39 @@ const Step4Payment: React.FC<{ formData: FormData; totalPrice: number; onBack: (
                          <hr className="border-white/10" />
                         <div className="flex justify-between font-bold text-lg"><span className="text-gray-300">Total to Pay:</span><span className="text-[#c8102e]">{localPrice} {currency}</span></div>
                     </div>
-                    <div className="mt-4 bg-black/40 p-4 rounded-md space-y-1">
-                        <p className="text-base"><strong className="text-gray-400">Method:</strong> {paymentMethod}</p>
-                        <p className="text-base"><strong className="text-gray-400">Account:</strong> {accountInfo}</p>
+                    
+                     <div className="mt-4 bg-black/40 p-4 rounded-md space-y-3 text-base">
+                        {isMyanmar ? (
+                            <>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Payment Method</span>
+                                    <span className="font-semibold text-white">KBZPay</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Account Phone</span>
+                                    <span className="font-bold text-xl text-[#c8102e] select-all">09798886653</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Account Name</span>
+                                    <span className="font-semibold text-white">Kyaw Kyaw Nyein</span>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Bank Name</span>
+                                    <span className="font-semibold text-white">Krungthai Bank</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Account Number</span>
+                                    <span className="font-bold text-xl text-[#c8102e] select-all">664-8-47412-2</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 text-sm uppercase tracking-wide">Account Name</span>
+                                    <span className="font-semibold text-white">MR. KYAW KYAW NYEIN</span>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
                  <div className="bg-white/5 border border-white/10 rounded-lg p-6 h-full">
