@@ -9,6 +9,10 @@
     <!-- Using Tailwind CDN for simplicity -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      :root {
+        /* Reducing base font-size to ~14.4px (90%) effectively zooms out the UI */
+        font-size: 90%;
+      }
       body {
         background-color: #0a0a0a;
         color: #e2e2e2;
@@ -31,7 +35,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
