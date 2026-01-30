@@ -75,15 +75,16 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ userData, onLogout
       }
 
       // RTA Student Bonus Logic
-      if (userData.isRtaStudent && (channel.name === 'MEGASCAN LIBRARY FOR ARCHVIZ')) {
-          return true;
+      // STRICT CHECK: Only show if approved AND marked as student in DB
+      if (channel.name === 'MEGASCAN LIBRARY FOR ARCHVIZ') {
+          return isApproved && userData.isRtaStudent;
       }
       
       return false;
     });
 
     return [...new Set(channels)]; // Remove duplicates if any
-  }, [userData, selectedPlanDetails]);
+  }, [userData, selectedPlanDetails, isApproved]);
   
   const amountPaid = selectedPlanDetails ? selectedPlanDetails.prices[userData.duration].total : 0;
 
