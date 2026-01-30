@@ -32,7 +32,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate, error
             <div className="space-y-2">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-200">Email</label>
                 <input 
-                    type="email" 
+                    type="text" 
                     id="email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
