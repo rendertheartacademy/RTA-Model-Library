@@ -28,12 +28,13 @@ serve(async (req: any) => {
       }
 
       // Check Database
-      // We check if there is an APPROVED subscription for this telegram handle
-      // Also check if subscription is still valid (end_date > now)
+      // STRICT LOGIC: Prepend '@' and use .eq for exact match
+      const formattedUsername = `@${username}`;
+
       const { data, error } = await supabase
         .from("subscriptions")
         .select("*")
-        .ilike("telegram_username", `@${username}`) // Case insensitive match, assumes stored with @
+        .eq("telegram_username", formattedUsername) // Exact match required
         .eq("status", "approved")
         .gt("end_date", new Date().toISOString())
         .maybeSingle();
